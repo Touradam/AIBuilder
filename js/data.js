@@ -17,6 +17,14 @@ const INTAKE_FORM_SUBTITLE =
 const INTAKE_FORM_CONFIRMATION =
   "Thanks — we got your application!\n\nWe'll review your responses and email you within 24 hours with cohort details, schedule, and how to join Week 1 free.\n\nQuestions before then? Email touradam3@gmail.com.";
 
+const cohortSchedule = {
+  firstSessionDate: '2026-06-05',
+  firstSessionDay: 'Friday, June 5, 2026',
+  firstSessionTime: '8:00–9:00 AM PST',
+  firstSessionLabel: 'Session 1 · AI Productivity & Cursor',
+  timezone: 'Pacific Time (PST)',
+};
+
 const programData = [
   {
     id: 'week1',
@@ -27,6 +35,8 @@ const programData = [
         id: 'w1s1',
         title: 'Session 1: AI Productivity & Cursor',
         subtitle: 'Mini exercise: Generate a personal bio page with AI',
+        schedule: 'Friday, June 5, 2026 · 8:00–9:00 AM PST',
+        duration: '1 hour',
         topics: [
           'What AI coding is',
           'How developers use AI',
@@ -235,7 +245,12 @@ const faqs = [
   {
     question: 'What is the schedule?',
     answer:
-      'The program runs 4 weeks with 3 live sessions per week (12 sessions total). Each session is 2–3 hours of hands-on, project-based learning online.',
+      'The next cohort starts Friday, June 5, 2026 at 8:00 AM PST with Session 1. The program runs 4 weeks with 3 live sessions per week (12 sessions total). Session times are shared after you apply.',
+  },
+  {
+    question: 'When does the next cohort start?',
+    answer:
+      'The first live session is Friday, June 5, 2026 from 8:00–9:00 AM Pacific Time (PST). Apply now to reserve your spot in Week 1 — it is completely free.',
   },
   {
     question: 'What if I miss a session?',

@@ -109,7 +109,8 @@ function renderScheduleTimeline() {
                 <h4>${day.title}</h4>
                 <p>${day.subtitle}</p>
                 <div class="timeline-meta">
-                  <span>2–3 Hours</span>
+                  ${day.schedule ? `<span>${day.schedule}</span>` : ''}
+                  <span>${day.duration || '2–3 Hours'}</span>
                   <span>Online</span>
                 </div>
               </div>
@@ -206,6 +207,21 @@ function renderAboutSections() {
   }
 }
 
+function renderCohortStart() {
+  if (typeof cohortSchedule === 'undefined') return;
+
+  const { firstSessionDay, firstSessionTime, firstSessionLabel } = cohortSchedule;
+  const summary = `${firstSessionDay} · ${firstSessionTime}`;
+
+  document.querySelectorAll('[data-cohort-start]').forEach((el) => {
+    el.textContent = summary;
+  });
+
+  document.querySelectorAll('[data-cohort-label]').forEach((el) => {
+    el.textContent = firstSessionLabel;
+  });
+}
+
 function initIntakeForm() {
   if (typeof INTAKE_FORM_URL === 'undefined') return;
 
@@ -239,5 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHomeAudience();
   renderHomePhilosophy();
   renderAboutSections();
+  renderCohortStart();
   initIntakeForm();
 });
