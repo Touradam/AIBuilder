@@ -6,7 +6,7 @@ const programOverview = {
   intro:
     'We are launching a 4-week live AI education program (3 sessions per week) designed for anyone — no prior technical background required.',
   quote:
-    'Teach people how to understand AI, think critically about it, and use it to build real tools that improve their lives — without becoming dependent, manipulated, or replaced by it.',
+    'We teach people how to understand AI, think critically about it, and use it to build real tools that improve their lives — without becoming dependent, manipulated, or replaced by it.',
   body: [
     'I believe AI is the most powerful tool humanity has ever created. Those who learn how to use it intentionally and responsibly will thrive in the coming years. Those who don\'t risk becoming passive users — or victims of it.',
   ],
