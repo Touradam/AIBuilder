@@ -482,13 +482,32 @@ h1, h2, h3, h4 {
   background-clip: text;
 }
 
+.hero-intro {
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+}
+
+.hero-quote {
+  text-align: left;
+  margin: 0 auto 1.5rem;
+}
+
 .hero .lead {
   font-size: clamp(1.0625rem, 2vw, 1.25rem);
   color: var(--text-muted);
   max-width: 36rem;
-  margin: 0 auto 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.7;
   animation: fadeUp 0.6s var(--ease) 0.2s both;
+}
+
+.hero-intro .lead {
+  margin-bottom: 1rem;
+}
+
+.hero-intro .lead:last-child {
+  margin-bottom: 2.5rem;
 }
 
 .hero .btn-group {
