@@ -10,8 +10,7 @@ This website showcases a comprehensive AI education program designed to teach pe
 
 - **index.html** — Home: hero, program overview, and value proposition
 - **about.html** — Philosophy, mission, and target audience
-- **program.html** — Detailed 6-day curriculum with expandable day sections
-- **schedule.html** — Timeline, format, and preparation details
+- **schedule.html** — Program format, detailed timeline, and preparation details
 - **contact.html** — Contact information and FAQ
 
 ## Project Structure
@@ -20,7 +19,6 @@ This website showcases a comprehensive AI education program designed to teach pe
 adama_AI_course/
 ├── index.html
 ├── about.html
-├── program.html
 ├── schedule.html
 ├── contact.html
 ├── css/

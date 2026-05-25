@@ -1,7 +1,6 @@
 const NAV_ITEMS = [
   { name: 'Home', href: 'index.html' },
   { name: 'About', href: 'about.html' },
-  { name: 'Program', href: 'program.html' },
   { name: 'Schedule', href: 'schedule.html' },
   { name: 'Contact', href: 'contact.html' },
 ];

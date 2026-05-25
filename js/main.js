@@ -23,60 +23,6 @@ function initMobileNav() {
   });
 }
 
-function initDayCards() {
-  document.querySelectorAll('.day-card-toggle').forEach((button) => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.day-card');
-      if (card) card.classList.toggle('expanded');
-    });
-  });
-}
-
-function renderProgramCurriculum() {
-  const container = document.getElementById('program-curriculum');
-  if (!container || typeof programData === 'undefined') return;
-
-  container.innerHTML = programData
-    .map(
-      (week) => `
-    <section class="week-section">
-      <div class="week-header">
-        <h2>${week.title}</h2>
-        <p>${week.subtitle}</p>
-      </div>
-      <div class="day-cards">
-        ${week.days
-          .map(
-            (day) => `
-          <article class="day-card">
-            <button type="button" class="day-card-toggle" aria-expanded="false">
-              <div>
-                <h3>${day.title}</h3>
-                <p>${day.subtitle}</p>
-              </div>
-              <svg class="day-card-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="day-card-topics">
-              <h4>Topics Covered:</h4>
-              <ul>
-                ${day.topics.map((topic) => `<li><span class="topic-dot"></span><span>${topic}</span></li>`).join('')}
-              </ul>
-            </div>
-          </article>
-        `
-          )
-          .join('')}
-      </div>
-    </section>
-  `
-    )
-    .join('');
-
-  initDayCards();
-}
-
 function getSessionNumber(weekIndex, dayIndex) {
   if (typeof programData === 'undefined') return dayIndex + 1;
   let session = dayIndex + 1;
@@ -243,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHeader();
   renderFooter();
   initMobileNav();
-  renderProgramCurriculum();
   renderScheduleTimeline();
   renderFaqs();
   renderHomeFocusAreas();
