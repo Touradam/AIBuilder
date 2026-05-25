@@ -4,20 +4,24 @@ const programTagline = 'Build tools that optimize your life — don\'t let AI us
 
 const programFocusAreas = [
   {
-    title: 'Understanding AI',
-    description: 'Learn what AI really is, how it works, and how to evaluate its outputs critically.',
+    title: 'Understand AI & Stay in Control',
+    description:
+      'Learn what AI is, how machines learn, and how to critically evaluate outputs so you stay in control of the technology—not the other way around.',
   },
   {
-    title: 'Machine Learning',
-    description: 'Gain a practical grasp of how machine learning works — principles over hype.',
+    title: 'Master Key AI Tools & Concepts',
+    description:
+      'Get hands-on with the most powerful AI tools and core concepts shaping today\'s world, and learn how to use them effectively.',
   },
   {
-    title: 'Build Real Applications',
-    description: 'Develop hands-on skills to build websites, extensions, and AI-powered tools that improve your life.',
+    title: 'Build with AI & Write Real Code',
+    description:
+      'Learn how to use AI to write code, build useful applications, and create tools that solve real problems.',
   },
   {
-    title: 'AI Literacy & Ethics',
-    description: 'Develop agency, ethical awareness, and the confidence to use AI deliberately — not passively.',
+    title: 'Become a Builder, Not a Bystander',
+    description:
+      'Develop the skills and mindset to work with AI—so you\'re among those who shape and direct it, not those replaced by it.',
   },
 ];
 
