@@ -27,10 +27,11 @@ const programFocusAreas = [
 ];
 
 const INTAKE_FORM_URL =
-  'https://touradam.notion.site/ebd2fb2b0c9b12980808d87def2a428c394';
+  'https://touradam.notion.site/3682b0c9b12980368964cb112ed1af0c?pvs=105';
 
-const INTAKE_FORM_EMBED_URL =
-  'https://touradam.notion.site/ebd2fb2b0c9b12980808d87def2a428c394';
+// Notion blocks standard page URLs in iframes on external sites.
+// To embed in-page, use Share → Publish → Embed this page in Notion and set INTAKE_FORM_EMBED_URL.
+const INTAKE_FORM_EMBED_URL = '';
 
 // Keep in sync with the Notion form page title, subtitle, and confirmation message.
 // Notion update steps:
