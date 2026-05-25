@@ -16,7 +16,7 @@ const programFocusAreas = [
   {
     title: 'Build with AI & Write Real Code',
     description:
-      'Learn how to use AI to write code, build useful applications, and create tools that solve real problems.',
+      'Learn how to use AI to write code, build useful applications, and create your own tools and take control over your life.',
   },
   {
     title: 'Become a Builder, Not a Bystander',
