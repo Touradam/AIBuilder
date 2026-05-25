@@ -273,6 +273,11 @@ h1, h2, h3, h4 {
   .footer-grid {
     grid-template-columns: 1.4fr 1fr 1fr;
   }
+
+  .footer-grid-simple {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+  }
 }
 
 .site-footer h3 {

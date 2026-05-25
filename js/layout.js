@@ -50,24 +50,10 @@ function renderFooter() {
   footer.className = 'site-footer';
   footer.innerHTML = `
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>${siteName}</h3>
-          <p>Understand AI, think critically, and build real tools that improve your life — without becoming dependent on technology.</p>
-        </div>
-        <div>
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="program.html">Program</a></li>
-            <li><a href="schedule.html">Schedule</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+      <div class="footer-grid footer-grid-simple">
         <div>
           <h3>Get in Touch</h3>
           <p>Email: <a href="mailto:touradam3@gmail.com">touradam3@gmail.com</a></p>
-          <p>Learn how to use AI tools like Cursor to build real projects that empower you.</p>
         </div>
       </div>
       <div class="footer-bottom">
