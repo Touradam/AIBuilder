@@ -225,13 +225,6 @@ const targetAudience = [
   { title: 'Anyone who wants to use AI as a tool, not a crutch', description: 'Build literacy and confidence to use AI intentionally, not passively' },
 ];
 
-const corePhilosophy = [
-  'Build tools that optimize your life — don\'t let AI use you.',
-  'AI is the most powerful tool humanity has created; learn to use it intentionally and responsibly.',
-  'Understanding principles matters more than passively consuming AI outputs.',
-  'The goal is agency, clarity, and empowerment — not dependency or replacement.',
-];
-
 const programStats = [
   { label: 'Duration', value: '4 Weeks' },
   { label: 'Live Sessions', value: '12' },

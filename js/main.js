@@ -184,40 +184,8 @@ function renderHomeFocusAreas() {
     .join('');
 }
 
-function renderHomePhilosophy() {
-  const container = document.getElementById('home-philosophy');
-  if (!container || typeof corePhilosophy === 'undefined') return;
-
-  container.innerHTML = corePhilosophy
-    .map(
-      (principle) => `
-    <div class="philosophy-item">
-      <span class="check-circle" aria-hidden="true">&#10003;</span>
-      <p>${principle}</p>
-    </div>
-  `
-    )
-    .join('');
-}
-
 function renderAboutSections() {
-  const philosophy = document.getElementById('about-philosophy');
   const audience = document.getElementById('about-audience');
-
-  if (philosophy && typeof corePhilosophy !== 'undefined') {
-    philosophy.innerHTML = corePhilosophy
-      .map(
-        (principle, index) => `
-      <div class="card">
-        <div class="philosophy-item">
-          <span class="number-circle">${index + 1}</span>
-          <p>${principle}</p>
-        </div>
-      </div>
-    `
-      )
-      .join('');
-  }
 
   if (audience && typeof targetAudience !== 'undefined') {
     audience.innerHTML = targetAudience
@@ -280,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFaqs();
   renderHomeFocusAreas();
   renderHomeAudience();
-  renderHomePhilosophy();
   renderAboutSections();
   renderCohortStart();
   initIntakeForm();
