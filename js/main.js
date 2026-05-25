@@ -215,6 +215,17 @@ function initIntakeForm() {
   if (primaryLink && typeof INTAKE_FORM_TITLE !== 'undefined') {
     primaryLink.textContent = INTAKE_FORM_TITLE;
   }
+
+  const embedWrap = document.getElementById('intake-form-embed');
+  const iframe = document.getElementById('intake-form-iframe');
+  const fallbackActions = document.getElementById('intake-form-fallback-actions');
+  const embedUrl = typeof INTAKE_FORM_EMBED_URL !== 'undefined' ? INTAKE_FORM_EMBED_URL : '';
+
+  if (embedWrap && iframe && embedUrl) {
+    iframe.src = embedUrl;
+    embedWrap.hidden = false;
+    if (fallbackActions) fallbackActions.hidden = true;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

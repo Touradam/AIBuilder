@@ -1511,6 +1511,21 @@ h2.section-title {
   text-align: center;
 }
 
+.intake-form-embed-wrap {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.intake-form-iframe {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+  border: 0;
+}
+
 .intake-form-panel-intro {
   color: var(--text-muted);
   margin: 0 0 1.5rem;
