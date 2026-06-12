@@ -1,7 +1,8 @@
 const SITE_NAME = 'AI Mastery Program';
 const LOGO_SRC = 'assets/logo.svg';
 
-const NOTION_FORM_URL = 'PASTE_NOTION_FORM_URL_HERE';
+const NOTION_FORM_URL =
+  'https://touradam.notion.site/3682b0c9b12980368964cb112ed1af0c?pvs=105';
 
 const cohortSchedule = {
   firstSessionDate: '2026-06-05',

@@ -69,12 +69,11 @@ function renderBetaLearnTopics() {
 }
 
 function initNotionFormLinks() {
-  if (typeof NOTION_FORM_URL === 'undefined') return;
+  if (typeof NOTION_FORM_URL === 'undefined' || !NOTION_FORM_URL) return;
+  if (NOTION_FORM_URL.startsWith('PASTE_') || !NOTION_FORM_URL.startsWith('http')) return;
 
   document.querySelectorAll('#notion-form-link, #notion-form-link-secondary').forEach((link) => {
-    if (!NOTION_FORM_URL.startsWith('PASTE_')) {
-      link.href = NOTION_FORM_URL;
-    }
+    link.href = NOTION_FORM_URL;
   });
 }
 
