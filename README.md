@@ -59,7 +59,13 @@ Colors and layout use CSS variables at the top of `css/styles.css` (Midnight Cha
 
 ## Deployment
 
-Upload all files to any static host (Netlify, GitHub Pages, S3, etc.). GitHub Pages workflow is included in `.github/workflows/static.yml`.
+Live site (GitHub Pages): **https://touradam.github.io/AdamaAIBuilderLab/**
+
+Repository: [github.com/Touradam/AdamaAIBuilderLab](https://github.com/Touradam/AdamaAIBuilderLab)
+
+Upload all files to any static host (Netlify, GitHub Pages, S3, etc.). GitHub Pages deploys automatically via `.github/workflows/static.yml` on push to `master`.
+
+If the site returns 404 after the first push, open the repo **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
 
 ## License
 
