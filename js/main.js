@@ -68,12 +68,76 @@ function renderBetaLearnTopics() {
     .join('');
 }
 
+function renderInstructorCard() {
+  const mount = document.getElementById('instructor-card-mount');
+  if (!mount || typeof instructorProfile === 'undefined') return;
+
+  const { name, role, lab, photo, tagline, bio, highlights } = instructorProfile;
+
+  mount.innerHTML = `
+    <article class="instructor-flip-card" tabindex="0" aria-expanded="false" aria-label="Instructor card for ${name}">
+      <div class="instructor-flip-inner">
+        <div class="instructor-flip-face instructor-flip-front">
+          <img src="${photo}" alt="${name}" class="instructor-flip-photo" width="280" height="280" />
+          <h3>${name}</h3>
+          <p class="instructor-flip-role">${role}</p>
+          <p class="instructor-flip-lab">${lab}</p>
+          <span class="instructor-flip-hint">${tagline}</span>
+        </div>
+        <div class="instructor-flip-face instructor-flip-back">
+          <div class="instructor-flip-back-inner">
+            <span class="instructor-flip-eyebrow">About your instructor</span>
+            <h3>${name}</h3>
+            ${bio.map((p) => `<p>${p}</p>`).join('')}
+            <ul class="instructor-flip-highlights">
+              ${highlights.map((item) => `<li>${item}</li>`).join('')}
+            </ul>
+            <button type="button" class="instructor-flip-close" aria-label="Close instructor details">&times;</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function initInstructorFlipCard() {
+  const card = document.querySelector('.instructor-flip-card');
+  if (!card) return;
+
+  function toggleFlip(open) {
+    const shouldFlip = typeof open === 'boolean' ? open : !card.classList.contains('is-flipped');
+    card.classList.toggle('is-flipped', shouldFlip);
+    card.setAttribute('aria-expanded', String(shouldFlip));
+  }
+
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.instructor-flip-close')) {
+      e.stopPropagation();
+      toggleFlip(false);
+      return;
+    }
+    toggleFlip();
+  });
+
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFlip();
+    }
+    if (e.key === 'Escape') {
+      toggleFlip(false);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderHeader();
   renderFooter();
   initMobileNav();
   renderCohortStart();
   renderBetaLearnTopics();
+  renderInstructorCard();
+  initInstructorFlipCard();
   if (typeof initBetaGate === 'function') {
     initBetaGate();
   }

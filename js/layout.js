@@ -45,7 +45,8 @@ function renderHeader() {
 
 function renderFooter() {
   const year = new Date().getFullYear();
-  const siteName = typeof SITE_NAME !== 'undefined' ? SITE_NAME : 'AI Education Program';
+  const copyrightHolder =
+    typeof COPYRIGHT_HOLDER !== 'undefined' ? COPYRIGHT_HOLDER : 'Tourdam AI Lab';
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.innerHTML = `
@@ -57,7 +58,7 @@ function renderFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; ${year} ${siteName}. All rights reserved.</p>
+        <p>&copy; ${year} ${copyrightHolder}. All rights reserved.</p>
       </div>
     </div>
   `;

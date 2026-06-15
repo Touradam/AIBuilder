@@ -1,5 +1,23 @@
 const SITE_NAME = 'AI Mastery Program';
+const COPYRIGHT_HOLDER = 'Tourdam AI Lab';
 const LOGO_SRC = 'assets/logo.svg';
+
+const instructorProfile = {
+  name: 'Touradam',
+  role: 'Program Instructor',
+  lab: 'Tourdam AI Lab',
+  photo: 'assets/adama.jpg',
+  tagline: 'Click to learn more',
+  bio: [
+    'I help beginners go from zero code to shipped projects — websites, browser games, Chrome extensions, and useful AI tools — using Cursor as your build partner.',
+    'This friends beta is intentionally small. I want honest feedback while we learn together, session by session.',
+  ],
+  highlights: [
+    'Hands-on live sessions every week',
+    'Cursor, GitHub, and real deploys',
+    'Patient guidance when things get stuck',
+  ],
+};
 
 const NOTION_FORM_URL =
   'https://touradam.notion.site/3682b0c9b12980368964cb112ed1af0c?pvs=105';
