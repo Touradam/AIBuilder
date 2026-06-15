@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Mastery Program | Friends Beta</title>
-  <meta name="description" content="A free friends-only beta of the AI Mastery Program. Learn to build websites, web apps, and Chrome extensions with Cursor — and help shape the course before public launch." />
+  <meta name="description" content="A friends-only beta of the AI Mastery Program. Learn to build websites, games, Chrome extensions, and useful tools with Cursor — no prior coding required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -15,125 +15,69 @@
 <body>
   <main class="roadmap-page">
     <section class="roadmap-hero">
-      <div class="roadmap-bg" aria-hidden="true"></div>
-      <div class="container roadmap-header">
+      <div class="roadmap-bg" aria-hidden="true">
+        <div class="roadmap-spotlight" id="roadmap-spotlight"></div>
+        <div class="roadmap-particles" id="roadmap-particles" aria-hidden="true"></div>
+        <div class="roadmap-equations roadmap-equations--hero" id="roadmap-equations-hero" aria-hidden="true"></div>
+      </div>
+      <div class="container roadmap-header reveal-stagger">
         <div class="roadmap-header-text">
-          <p class="roadmap-eyebrow">AI Education Program · Friends Beta</p>
-          <h1>Course Roadmap</h1>
-          <p class="roadmap-subtitle">Build tools that optimize your life — from first website to capstone demo.</p>
-          <p class="cohort-start-banner">First live session: <strong data-cohort-start>Friday, June 5, 2026 · 7:00–8:00 PM PST</strong></p>
+          <p class="roadmap-eyebrow reveal-item">AI Education Program · Friends Beta</p>
+          <h1 class="reveal-item">Course Roadmap</h1>
+          <p class="roadmap-subtitle reveal-item">From zero code to shipped projects with Cursor.</p>
+          <p class="cohort-start-banner reveal-item">First live session: <strong data-cohort-start>Friday, July 10, 2026 · 7:00–8:00 PM PST</strong></p>
+          <div class="countdown-wrap reveal-item" id="countdown-wrap" hidden>
+            <span class="countdown-label">Starts in</span>
+            <div class="countdown-timer" id="countdown-timer" aria-live="polite"></div>
+          </div>
         </div>
-        <div class="roadmap-stats-pill">
+        <div class="roadmap-stats-pill reveal-item tilt-card">
           <div class="roadmap-stats-col">
             <span class="roadmap-stats-value">1 Month</span>
             <span class="roadmap-stats-label">Live sessions</span>
           </div>
           <div class="roadmap-stats-divider" aria-hidden="true"></div>
           <div class="roadmap-stats-col">
-            <span class="roadmap-stats-value">Free</span>
-            <span class="roadmap-stats-label">Gift for friends</span>
+            <span class="roadmap-stats-value">4 Phases</span>
+            <span class="roadmap-stats-label">Course path</span>
           </div>
         </div>
       </div>
 
-      <div class="container roadmap-visual-wrap">
-        <img
-          class="roadmap-svg-desktop"
-          src="assets/course-roadmap.svg"
-          alt="Course roadmap: Foundations, Chrome Extensions, AI Web Apps, and Launch over four weeks"
-          width="1600"
-          height="900"
-        />
-        <div class="roadmap-cards-mobile" aria-label="Course roadmap">
-          <article class="roadmap-card">
-            <div class="roadmap-card-num">1</div>
-            <div class="roadmap-card-body">
-              <span class="roadmap-card-tag">Free gift</span>
-              <h2>Foundations</h2>
-              <p class="roadmap-card-lead">AI, tools and first website</p>
-              <ul>
-                <li>S1: AI + setup</li>
-                <li>S2: Build portfolio</li>
-                <li>S3: Deploy live site</li>
-              </ul>
-              <span class="roadmap-card-outcome">Outcome: live portfolio</span>
-            </div>
-          </article>
-          <article class="roadmap-card roadmap-card--offset">
-            <div class="roadmap-card-num">2</div>
-            <div class="roadmap-card-body">
-              <span class="roadmap-card-tag">Hands-on</span>
-              <h2>Extensions</h2>
-              <p class="roadmap-card-lead">Chrome tools and workflow</p>
-              <ul>
-                <li>S4: GitHub workflow</li>
-                <li>S5: Extension basics</li>
-                <li>S6: AI-powered helpers</li>
-              </ul>
-              <span class="roadmap-card-outcome">Outcome: useful extension</span>
-            </div>
-          </article>
-          <article class="roadmap-card">
-            <div class="roadmap-card-num">3</div>
-            <div class="roadmap-card-body">
-              <span class="roadmap-card-tag">Build</span>
-              <h2>AI Web Apps</h2>
-              <p class="roadmap-card-lead">APIs to working AI tools</p>
-              <ul>
-                <li>S7: OpenAI API</li>
-                <li>S8: Frontend + backend</li>
-                <li>S9: Build a real AI tool</li>
-              </ul>
-              <span class="roadmap-card-outcome">Outcome: AI web app</span>
-            </div>
-          </article>
-          <article class="roadmap-card roadmap-card--offset">
-            <div class="roadmap-card-num">4</div>
-            <div class="roadmap-card-body">
-              <span class="roadmap-card-tag">Ship</span>
-              <h2>Launch</h2>
-              <p class="roadmap-card-lead">Deploy, polish and present</p>
-              <ul>
-                <li>S10: Hosting + deploy</li>
-                <li>S11: Capstone coaching</li>
-                <li>S12: Demo Day</li>
-              </ul>
-              <span class="roadmap-card-outcome">Outcome: capstone demo</span>
-            </div>
-          </article>
+      <div class="container roadmap-phase-nav reveal-on-scroll" id="roadmap-phase-nav" aria-label="Course phases"></div>
+
+      <div class="container roadmap-phase-detail reveal-on-scroll" id="roadmap-phase-detail" hidden></div>
+
+      <div class="container roadmap-visual-wrap reveal-on-scroll">
+        <div class="roadmap-svg-frame" id="roadmap-svg-frame">
+          <div class="roadmap-equations roadmap-equations--svg" id="roadmap-equations-svg" aria-hidden="true"></div>
+          <img
+            class="roadmap-svg-desktop"
+            src="assets/course-roadmap.svg"
+            alt="Course roadmap: First Site, Interactivity, AI Extension, and Ship Tool over four weeks"
+            width="1600"
+            height="900"
+          />
+          <div class="roadmap-hotspots" id="roadmap-hotspots" aria-hidden="true"></div>
+          <div class="roadmap-flip-overlays" id="roadmap-flip-overlays" aria-hidden="true"></div>
         </div>
+        <div class="roadmap-cards-mobile" id="roadmap-cards-mobile" aria-label="Course roadmap"></div>
       </div>
 
-      <div class="container">
+      <div class="container reveal-on-scroll">
         <div class="roadmap-footer-bar">
-          <p><strong>Schedule:</strong> <span data-weekly-schedule>Friday 7–8 PM · Saturday &amp; Sunday 8–10 AM PST</span></p>
-          <p><strong>Tools:</strong> Cursor, GitHub, Chrome Extensions, OpenAI APIs, GitHub Pages, Hostinger</p>
+          <p><strong>Schedule:</strong> <span data-weekly-schedule>Friday 7–8 PM intro · Saturday &amp; Sunday 8–10 AM practice &amp; mastery PST</span></p>
+          <p><strong>Tools:</strong> Cursor, ChatGPT, GitHub, OpenAI API, Chrome Extensions, GitHub Pages, Hostinger</p>
         </div>
       </div>
 
-      <div class="container roadmap-cta-row">
+      <div class="container roadmap-cta-row reveal-on-scroll">
         <div class="btn-group">
-          <button type="button" id="join-beta-btn" class="btn btn-primary">Join the Beta</button>
+          <button type="button" id="join-beta-btn" class="btn btn-primary btn-shine">Join the Beta</button>
           <a href="success.html" class="btn btn-secondary">Get Ready</a>
         </div>
       </div>
     </section>
-
-    <!-- Hidden signup panel for post-verification state -->
-    <div id="beta-signup-panel" class="container beta-signup-banner" hidden>
-      <div class="intake-form-panel">
-        <p class="intake-form-panel-intro">Your spot is ready. Complete the form to confirm.</p>
-        <div class="btn-group intake-form-actions">
-            <a id="notion-form-link" class="btn btn-primary" href="https://touradam.notion.site/3682b0c9b12980368964cb112ed1af0c?pvs=105" target="_blank" rel="noopener noreferrer">Sign Up for the Beta</a>
-        </div>
-        <p class="beta-signup-note">After you sign up, you'll receive an email with the link for the class.</p>
-        <p class="intake-form-fallback">
-          Having trouble?
-          <a id="notion-form-link-secondary" href="https://touradam.notion.site/3682b0c9b12980368964cb112ed1af0c?pvs=105" target="_blank" rel="noopener noreferrer">Open form in a new tab</a>
-          or email <a href="mailto:touradam3@gmail.com">touradam3@gmail.com</a>
-        </p>
-      </div>
-    </div>
   </main>
 
   <!-- Join modal: friendship message + code gate -->
@@ -145,7 +89,7 @@
         <h3 id="join-modal-title">I'm glad you're here.</h3>
         <div class="beta-modal-message">
           <p>
-            This program is my gift to you — completely free — because you matter to me. I'm running this friends-only beta before I open it to the public, and your honest feedback will help me make it something truly worth sharing.
+            I'm running this friends-only beta before I open it to the public. Your honest feedback will help me make it something truly worth sharing.
           </p>
           <p>
             Thank you for trusting me with your time. It means more than you know.
@@ -166,7 +110,7 @@
     </div>
   </div>
 
-  <!-- Success modal: celebration + gift philosophy -->
+  <!-- Success modal: shown only after secret code entry -->
   <div id="beta-success-modal" class="beta-modal-root" hidden>
     <div class="beta-modal-overlay beta-modal-overlay--celebrate">
       <div id="confetti-container" class="confetti-container" aria-hidden="true"></div>
@@ -179,19 +123,17 @@
             I'm so happy you're joining me on this journey. Truly — thank you for being my friend.
           </p>
           <p class="beta-gift-quote">
-            I believe we get what we give, and what we give is what we get. This course is my gift to you — freely given — because that's how I want to show up in this world.
-          </p>
-          <p>
-            I hope it brings you real value: skills you can use, projects you're proud of, and the confidence to build with AI as your partner. Your feedback along the way will help me refine every session before I share this with everyone else.
+            This program is my gift to you — completely free — because you matter to me. Claim your free spot now to reserve your place in the beta.
           </p>
         </div>
-        <button type="button" id="beta-modal-close" class="btn btn-primary">Claim Your Gift — Sign Up</button>
+        <button type="button" id="beta-modal-close" class="btn btn-primary">Claim Your Free Spot — Sign Up</button>
       </div>
     </div>
   </div>
 
   <script src="js/data.js"></script>
   <script src="js/layout.js"></script>
+  <script src="js/interactions.js"></script>
   <script src="js/beta-gate.js"></script>
   <script src="js/main.js"></script>
 </body>

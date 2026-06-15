@@ -1,4 +1,4 @@
-const BETA_ACCESS_KEY = 'betaAccessGranted';
+const BETA_FORM_REVOKED_KEY = 'betaFormRevoked';
 
 function isValidGateEntry(digit, allowedList) {
   if (digit === '' || digit === null || digit === undefined) return false;
@@ -28,19 +28,32 @@ function closeModal(modalId) {
   }
 }
 
-function showSignupPanel(signupPanel) {
-  if (signupPanel) {
-    signupPanel.hidden = false;
-    signupPanel.classList.add('beta-signup-reveal');
-    signupPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function revokeFormAccess() {
+  sessionStorage.setItem(BETA_FORM_REVOKED_KEY, 'true');
+}
+
+function isFormAccessRevoked() {
+  return sessionStorage.getItem(BETA_FORM_REVOKED_KEY) === 'true';
+}
+
+function openNotionForm() {
+  if (typeof NOTION_FORM_URL !== 'undefined' && NOTION_FORM_URL && !NOTION_FORM_URL.startsWith('PASTE_')) {
+    window.open(NOTION_FORM_URL, '_blank', 'noopener,noreferrer');
   }
 }
 
 function shakeGateInputs(inputs) {
   inputs.forEach((input) => {
     input.classList.add('is-invalid');
+    input.classList.remove('is-valid');
     setTimeout(() => input.classList.remove('is-invalid'), 500);
   });
+}
+
+function flashGateInput(input) {
+  if (!input || !input.value) return;
+  input.classList.add('is-valid');
+  input.classList.remove('is-invalid');
 }
 
 function spawnConfetti() {
@@ -66,11 +79,10 @@ function showSuccessModal() {
 
 function initBetaGate() {
   const joinBtn = document.getElementById('join-beta-btn');
-  const joinModal = document.getElementById('join-modal');
-  const signupPanel = document.getElementById('beta-signup-panel');
   const continueBtn = document.getElementById('beta-gate-continue');
   const errorEl = document.getElementById('beta-gate-error');
   const modalCloseBtn = document.getElementById('beta-modal-close');
+  const successModal = document.getElementById('beta-success-modal');
 
   const input1 = document.getElementById('beta-gate-1');
   const input2 = document.getElementById('beta-gate-2');
@@ -83,26 +95,18 @@ function initBetaGate() {
   const digits2 = typeof betaGateDigits2 !== 'undefined' ? betaGateDigits2 : [];
   const pairs = typeof betaGatePairs !== 'undefined' ? betaGatePairs : [];
 
-  if (sessionStorage.getItem(BETA_ACCESS_KEY) === 'true') {
-    showSignupPanel(signupPanel);
-    joinBtn.textContent = 'Sign Up for the Beta';
-    const scrollToSignup = () => {
-      showSignupPanel(signupPanel);
-      signupPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    };
-    joinBtn.addEventListener('click', scrollToSignup);
-    if (window.location.hash === '#join') {
-      scrollToSignup();
-    }
-    return;
-  }
+  let formClaimedThisVisit = false;
+  let successModalOpen = false;
 
   function clearError() {
     if (errorEl) errorEl.hidden = true;
   }
 
-  function showError() {
-    if (errorEl) errorEl.hidden = false;
+  function showError(message) {
+    if (errorEl) {
+      errorEl.textContent = message || "That didn't work. Try again.";
+      errorEl.hidden = false;
+    }
     shakeGateInputs(inputs);
   }
 
@@ -117,12 +121,6 @@ function initBetaGate() {
     return pairs.some((p) => String(p).startsWith(value));
   }
 
-  function isValidPairComplete(value) {
-    if (value.length !== 2) return false;
-    const num = parseInt(value, 10);
-    return pairs.includes(num);
-  }
-
   function handleDigitInput(input, allowed, nextInput, prevInput, isPair) {
     input.addEventListener('input', () => {
       clearError();
@@ -134,6 +132,10 @@ function initBetaGate() {
           value = value.slice(0, -1);
         }
         input.value = value;
+        if (value.length === 2) {
+          flashGateInput(input);
+          tryAutoSubmit();
+        }
         return;
       }
 
@@ -143,7 +145,11 @@ function initBetaGate() {
         return;
       }
       input.value = value;
-      if (value && nextInput) nextInput.focus();
+      if (value) {
+        flashGateInput(input);
+        if (nextInput) nextInput.focus();
+        else tryAutoSubmit();
+      }
     });
 
     input.addEventListener('keydown', (e) => {
@@ -159,16 +165,43 @@ function initBetaGate() {
     });
   }
 
+  function tryAutoSubmit() {
+    const box1 = input1 ? input1.value : '';
+    const box2 = input2 ? input2.value : '';
+    const box3 = input3 ? input3.value : '';
+    if (
+      box1 &&
+      box2 &&
+      box3.length === 2 &&
+      isValidGateEntry(box1, digits1) &&
+      isValidGateEntry(box2, digits2) &&
+      isValidGatePair(box3, pairs)
+    ) {
+      setTimeout(onContinue, 280);
+    }
+  }
+
   if (input1) handleDigitInput(input1, digits1, input2, null, false);
   if (input2) handleDigitInput(input2, digits2, input3, input1, false);
   if (input3) handleDigitInput(input3, pairs, null, input2, true);
 
   function openJoinModal() {
     openModal('join-modal');
+    if (isFormAccessRevoked()) {
+      if (input1) {
+        input1.value = '';
+        input2.value = '';
+        input3.value = '';
+        inputs.forEach((inp) => inp.classList.remove('is-valid', 'is-invalid'));
+      }
+      showError('Your invitation window has closed. Reach out to your friend if you still want to join.');
+      return;
+    }
     if (input1) {
       input1.value = '';
       input2.value = '';
       input3.value = '';
+      inputs.forEach((inp) => inp.classList.remove('is-valid', 'is-invalid'));
       clearError();
       setTimeout(() => input1.focus(), 200);
     }
@@ -186,19 +219,29 @@ function initBetaGate() {
     });
   });
 
+  function dismissSuccessWithoutClaim() {
+    if (!successModalOpen || formClaimedThisVisit) return;
+    successModalOpen = false;
+    revokeFormAccess();
+    closeModal('beta-success-modal');
+  }
+
   function grantAccess() {
-    sessionStorage.setItem(BETA_ACCESS_KEY, 'true');
+    if (isFormAccessRevoked()) {
+      showError('Your invitation window has closed. Reach out to your friend if you still want to join.');
+      return;
+    }
     closeModal('join-modal');
+    successModalOpen = true;
     showSuccessModal();
-    joinBtn.textContent = 'Sign Up for the Beta';
-    joinBtn.removeEventListener('click', openJoinModal);
-    joinBtn.addEventListener('click', () => {
-      showSignupPanel(signupPanel);
-      signupPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
   }
 
   function onContinue() {
+    if (isFormAccessRevoked()) {
+      showError('Your invitation window has closed. Reach out to your friend if you still want to join.');
+      return;
+    }
+
     const box1 = input1 ? input1.value : '';
     const box2 = input2 ? input2.value : '';
     const box3 = input3 ? input3.value : '';
@@ -218,18 +261,32 @@ function initBetaGate() {
     continueBtn.addEventListener('click', onContinue);
   }
 
-  function dismissCelebrationAndRevealSignup() {
+  function claimSpotAndOpenForm() {
+    formClaimedThisVisit = true;
+    successModalOpen = false;
+    revokeFormAccess();
     closeModal('beta-success-modal');
-    showSignupPanel(signupPanel);
-
-    if (typeof NOTION_FORM_URL !== 'undefined' && NOTION_FORM_URL && !NOTION_FORM_URL.startsWith('PASTE_')) {
-      setTimeout(() => {
-        window.open(NOTION_FORM_URL, '_blank', 'noopener,noreferrer');
-      }, 800);
-    }
+    openNotionForm();
   }
 
   if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', dismissCelebrationAndRevealSignup);
+    modalCloseBtn.addEventListener('click', claimSpotAndOpenForm);
   }
+
+  if (successModal) {
+    const successOverlay = successModal.querySelector('.beta-modal-overlay');
+    if (successOverlay) {
+      successOverlay.addEventListener('click', (e) => {
+        if (e.target === successOverlay) {
+          dismissSuccessWithoutClaim();
+        }
+      });
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && successModal && !successModal.hidden) {
+      dismissSuccessWithoutClaim();
+    }
+  });
 }

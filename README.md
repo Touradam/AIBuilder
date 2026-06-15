@@ -15,11 +15,14 @@ A static 2-page website for the free friends-only beta cohort of the AI Mastery 
 ├── css/
 │   └── styles.css
 ├── js/
-│   ├── data.js       # Site constants, cohort schedule, learn topics, gate allowed values
-│   ├── layout.js     # Header and footer
-│   ├── beta-gate.js  # Signup gate validation and modal
-│   └── main.js       # Mobile nav, dynamic sections, form links
+│   ├── data.js          # Site constants, cohort schedule, roadmap phases
+│   ├── layout.js        # Header and footer
+│   ├── interactions.js  # Roadmap flip cards, animations, countdown
+│   ├── beta-gate.js     # Signup gate validation and modal
+│   └── main.js          # Mobile nav, dynamic sections
 ├── assets/
+│   ├── logo.svg
+│   └── course-roadmap.svg
 ├── robots.txt
 ├── sitemap.xml
 └── README.md
@@ -59,11 +62,16 @@ Colors and layout use CSS variables at the top of `css/styles.css` (Midnight Cha
 
 ## Deployment
 
-Live site (GitHub Pages): **https://touradam.github.io/AdamaAIBuilderLab/**
+Repository: [github.com/Touradam/AIBuilder](https://github.com/Touradam/AIBuilder)
 
-Repository: [github.com/Touradam/AdamaAIBuilderLab](https://github.com/Touradam/AdamaAIBuilderLab)
+Only website files are tracked in git (HTML, CSS, JS, `assets/logo.svg`, `assets/course-roadmap.svg`, `robots.txt`, `sitemap.xml`, and the Pages workflow). Flyers, drafts, team images, and course materials stay local via `.gitignore`.
 
-Upload all files to any static host (Netlify, GitHub Pages, S3, etc.). GitHub Pages deploys automatically via `.github/workflows/static.yml` on push to `master`.
+GitHub Pages deploys automatically via `.github/workflows/static.yml` on push to `master`.
+
+```bash
+git remote set-url origin https://github.com/Touradam/AIBuilder.git
+git push -u origin master
+```
 
 If the site returns 404 after the first push, open the repo **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
 
