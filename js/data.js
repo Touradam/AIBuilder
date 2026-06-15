@@ -3,19 +3,18 @@ const COPYRIGHT_HOLDER = 'Tourdam AI Lab';
 const LOGO_SRC = 'assets/logo.svg';
 
 const instructorProfile = {
-  name: 'Touradam',
-  role: 'Program Instructor',
+  name: 'Adama Touré',
+  role: 'Renewable Energy Engineer & Educator',
   lab: 'Tourdam AI Lab',
   photo: 'assets/adama.jpg',
   tagline: 'Click to learn more',
   bio: [
-    'I help beginners go from zero code to shipped projects — websites, browser games, Chrome extensions, and useful AI tools — using Cursor as your build partner.',
-    'This friends beta is intentionally small. I want honest feedback while we learn together, session by session.',
-  ],
-  highlights: [
-    'Hands-on live sessions every week',
-    'Cursor, GitHub, and real deploys',
-    'Patient guidance when things get stuck',
+    'Adama Touré is a renewable energy engineer, entrepreneur, educator, and systems thinker dedicated to helping people use technology to improve their lives and create a better future.',
+    'Raised in Conakry, Guinea, where unreliable electricity and water scarcity were part of everyday life, Adama developed a deep commitment to solving the infrastructure challenges that limit human potential. His work is driven by a mission to expand access to clean energy, knowledge, and technology while helping communities become more resilient to climate and economic challenges.',
+    'With a multidisciplinary background spanning architecture, physics, mathematics, renewable energy engineering, and artificial intelligence, Adama brings a systems-level perspective to problem solving. He is the founder of SEPT (Solar Energy Protection Technology), where he develops intelligent hardware and machine learning solutions that make solar energy systems safer, smarter, and more reliable.',
+    'Beyond his work in renewable energy, Adama is passionate about teaching others how to understand and build with AI. He believes that AI will become one of the most important technologies of our time, and that the people who learn to work alongside it will have the greatest ability to create opportunities, solve problems, and shape the future.',
+    'His teaching philosophy is simple: technology should empower people, not replace them. Through this program, students will learn not only how to use AI tools, but how to think critically, build practical solutions, and become creators in the AI era rather than passive consumers of technology.',
+    'At his core, Adama is building more than technology—he is helping people develop the skills, mindset, and confidence needed to thrive in a rapidly changing world.',
   ],
 };
 

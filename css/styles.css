@@ -1132,9 +1132,13 @@ h2.section-title {
 
 .instructor-flip-back p {
   margin: 0 0 0.75rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.6;
+}
+
+.instructor-flip-back p:last-of-type {
+  margin-bottom: 0;
 }
 
 .instructor-flip-highlights {

@@ -86,12 +86,14 @@ function renderInstructorCard() {
         </div>
         <div class="instructor-flip-face instructor-flip-back">
           <div class="instructor-flip-back-inner">
-            <span class="instructor-flip-eyebrow">About your instructor</span>
+            <span class="instructor-flip-eyebrow">About the Instructor</span>
             <h3>${name}</h3>
             ${bio.map((p) => `<p>${p}</p>`).join('')}
-            <ul class="instructor-flip-highlights">
-              ${highlights.map((item) => `<li>${item}</li>`).join('')}
-            </ul>
+            ${
+              highlights?.length
+                ? `<ul class="instructor-flip-highlights">${highlights.map((item) => `<li>${item}</li>`).join('')}</ul>`
+                : ''
+            }
             <button type="button" class="instructor-flip-close" aria-label="Close instructor details">&times;</button>
           </div>
         </div>
