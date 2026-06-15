@@ -4,7 +4,7 @@ const LOGO_SRC = 'assets/logo.svg';
 
 const instructorProfile = {
   name: 'Adama Touré',
-  role: 'Renewable Energy Engineer & Educator',
+  role: 'AI Builder instructor',
   lab: 'Tourdam AI Lab',
   photo: 'assets/adama.jpg',
   tagline: 'Click to learn more',
